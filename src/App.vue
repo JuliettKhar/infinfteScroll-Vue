@@ -1,10 +1,20 @@
 <template>
-  <div>
-    <router-link to="/">
-      Home
-    </router-link> | <router-link to="/medium">
-      Medium
-    </router-link>
-    <router-view />
-  </div>
+  <main>
+    <div class="container">
+      <Home />
+    </div>
+  </main>
 </template>
+<script>
+import Home from './components/Home.vue';
+
+export default {
+    components: {
+        Home
+    }
+};
+</script>
+
+<style lang="scss">
+  @import './scss/main.scss'; 
+</style>

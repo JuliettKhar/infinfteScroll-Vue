@@ -17,8 +17,8 @@
   "author": "Julia Kharlamova",
   "dependencies": {
     "@babel/polyfill": "~7.2",
-    "vue": "~2.6",
-    "vue-router": "~3.0"
+    "bulma": "^0.8.0",
+    "vue": "~2.6"
   },
   "devDependencies": {
     "@babel/core": "~7.2",
