@@ -17,10 +17,20 @@ const webpackConfig = merge(commonConfig, {
         chunkFilename: 'js/[id].chunk.js'
     },
     optimization: {
-        runtimeChunk: 'single',
         splitChunks: {
-            chunks: 'all'
-        }
+            chunks: 'all',
+            minSize: 300,
+            // minRemainingSize: 0,
+            maxSize: 3000,
+            maxAsyncRequests: 4,
+            // automaticNameMaxLength: 30,
+            cacheGroups: {
+                defaultVendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+            }
+        },
     },
     plugins: [
         new webpack.EnvironmentPlugin(environment),

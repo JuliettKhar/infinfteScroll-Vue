@@ -20,7 +20,19 @@ const webpackConfig = merge(commonConfig, {
         chunkFilename: 'js/[id].[hash].chunk.js'
     },
     optimization: {
-        runtimeChunk: 'single',
+        usedExports: true,
+        splitChunks: {
+            chunks: 'all',
+            minSize: 300,
+            maxSize: 3000,
+            maxAsyncRequests: 4,
+            cacheGroups: {
+                defaultVendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+            }
+        },
         minimizer: [
             new OptimizeCSSAssetsPlugin({
                 cssProcessorPluginOptions: {
@@ -32,27 +44,7 @@ const webpackConfig = merge(commonConfig, {
                 parallel: true,
                 sourceMap: !isProd
             })
-        ],
-        splitChunks: {
-            chunks: 'all',
-            maxInitialRequests: Infinity,
-            minSize: 0,
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name (module) {
-                        const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-                        return `npm.${packageName.replace('@', '')}`;
-                    }
-                },
-                styles: {
-                    test: /\.css$/,
-                    name: 'styles',
-                    chunks: 'all',
-                    enforce: true
-                }
-            }
-        }
+        ]
     },
     plugins: [
         new webpack.EnvironmentPlugin(environment),

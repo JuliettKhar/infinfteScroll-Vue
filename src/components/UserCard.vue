@@ -35,33 +35,38 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import Observer from './Observer.vue';
+import { User } from '../types/user';
 
-export default {
+@Component({
     components: {
         Observer
-    },
-    data () {
-        return {
-            page: 1,
-            perPage: 20,
-            users: []
-        };
-    },
-    methods: {
-        async intersected () {  
-            const response = await fetch(`https://randomuser.me/api/?page=${ this.page }&results=${ this.perPage }`)
-                .then( response => response.json())
-                .then( response => {
-                    const users = [];
-                    response.results.forEach( user => users.push(user));
-                    this.page +=1;
-                    this.users = [ ...this.users, ...users ];
-                });
-        }
     }
-};
+})
+export default class UserCard extends Vue {
+  page: number;
+  users: User[];
+
+  constructor () {
+      super();
+      this.page = 1;
+      this.users = [];
+  }
+
+  async intersected () {  
+      const response = await fetch(`https://randomuser.me/api/?page=${ this.page }&results=20`)
+          .then( response => response.json())
+          .then( response => {
+              const users: User[] = [];
+              response.results.forEach( (user:any) => users.push(user));
+              this.page +=1;
+              this.users = [ ...this.users, ...users ];
+          });
+  }
+}
 </script>
 
 <style lang="scss" scoped>

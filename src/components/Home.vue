@@ -2,12 +2,16 @@
   <UserCard />
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import UserCard from './UserCard.vue';
 
-export default {
+@Component({
     components: {
         UserCard
     }
-};
+})
+
+export default class Home extends Vue {}
 </script>

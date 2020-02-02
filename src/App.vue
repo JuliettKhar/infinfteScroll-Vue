@@ -5,14 +5,17 @@
     </div>
   </main>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import Home from './components/Home.vue';
 
-export default {
+@Component({
     components: {
         Home
     }
-};
+})
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
