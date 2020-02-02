@@ -23,8 +23,8 @@ const webpackConfig = merge(commonConfig, {
         usedExports: true,
         splitChunks: {
             chunks: 'all',
-            minSize: 300,
-            maxSize: 3000,
+            minSize: 30,
+            maxSize: 300,
             maxAsyncRequests: 4,
             cacheGroups: {
                 defaultVendors: {

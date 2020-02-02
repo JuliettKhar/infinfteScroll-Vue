@@ -12,7 +12,7 @@
     "ecmaFeatures": { "legacyDecorators": true }
   },
   "extends": [
-    "eslint:recommended",
+    "eslint:standard",
     "plugin:vue/base",
     "plugin:vue/essential",
     "plugin:vue/strongly-recommended",

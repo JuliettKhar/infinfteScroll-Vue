@@ -1,3 +1,6 @@
+/**
+ * create a model of users from incoming rest api data
+ */
 export class User {
   firstName: string;
   lastName: string;

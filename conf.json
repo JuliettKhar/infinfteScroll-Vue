@@ -1,0 +1,25 @@
+{
+  " source " : {
+    "includePattern": "\\.(jsx|js|ts|tsx)$",
+    "excludePattern" : " . + \\ . (test | spec) .ts )"
+ },
+ " plugins " : [
+    "plugins/markdown" ,
+    "node_modules/jsdoc-babel"
+ ],
+ "opts": {
+  "template": "./",
+  "encoding": "utf8",
+  "destination": "docs/",
+  "recurse": true,
+  "verbose": true,
+  "tutorials": "./src/"
+},
+ " babel " : {
+    "extensions" : [ "ts" , " tsx " ],
+    "ignore" : [ " ** / *. (test | spec) .ts " ],
+    " babelrc " : false ,
+  " presets " : [[ " @ babel / preset-env " , { " target " : { " node " : true }}]," @ babel / preset-typcript" ],
+    " плагины " : [ " @ babel / Предложение-класс-свойства " , " @ Бабель / предложение-объект-отдых-распространение " ]
+ }
+}
