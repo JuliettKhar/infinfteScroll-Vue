@@ -1,3 +1,10 @@
+/**
+ * Represents a query.
+ * return query to rest api with a given number of pages
+ * @param { number } page - quantity of pages
+ * @returns { Promise } - response
+ */
+
 class UserService {
   constructor () {};
 

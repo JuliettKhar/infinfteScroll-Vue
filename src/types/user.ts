@@ -1,4 +1,6 @@
 /**
+ * Represents a user.
+ * @constructor
  * create a model of users from incoming rest api data
  */
 export class User {
