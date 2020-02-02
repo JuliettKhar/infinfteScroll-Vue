@@ -40,6 +40,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import Observer from './Observer.vue';
 import { User } from '../types/user';
+import { userService } from '../services/userService';
 
 @Component({
     components: {
@@ -57,7 +58,7 @@ export default class UserCard extends Vue {
   }
 
   async intersected () {  
-      const response = await fetch(`https://randomuser.me/api/?page=${ this.page }&results=20`)
+      const response = await userService.getUsers(this.page)
           .then( response => response.json())
           .then( response => {
               const users: User[] = [];
