@@ -20,7 +20,13 @@ const webpackConfig = merge(commonConfig, {
         chunkFilename: 'js/[id].[hash].chunk.js'
     },
     optimization: {
-        runtimeChunk: 'single',
+        usedExports: true,
+        splitChunks: {
+            chunks: 'all',
+            minSize: 30,
+            maxSize: 300,
+            maxAsyncRequests: 4
+        },
         minimizer: [
             new OptimizeCSSAssetsPlugin({
                 cssProcessorPluginOptions: {
@@ -32,27 +38,7 @@ const webpackConfig = merge(commonConfig, {
                 parallel: true,
                 sourceMap: !isProd
             })
-        ],
-        splitChunks: {
-            chunks: 'all',
-            maxInitialRequests: Infinity,
-            minSize: 0,
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name (module) {
-                        const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-                        return `npm.${packageName.replace('@', '')}`;
-                    }
-                },
-                styles: {
-                    test: /\.css$/,
-                    name: 'styles',
-                    chunks: 'all',
-                    enforce: true
-                }
-            }
-        }
+        ]
     },
     plugins: [
         new webpack.EnvironmentPlugin(environment),
@@ -64,7 +50,7 @@ const webpackConfig = merge(commonConfig, {
             filename: '[path].gz[query]',
             algorithm: 'gzip',
             test: new RegExp('\\.(js|css)$'),
-            threshold: 10240,
+            threshold: 8192,
             minRatio: 0.8
         }),
         new webpack.HashedModuleIdsPlugin()

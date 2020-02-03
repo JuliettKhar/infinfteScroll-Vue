@@ -8,18 +8,28 @@ const isDev                = process.env.NODE_ENV === 'development';
 
 const webpackConfig = {
     entry: {
+        
         polyfill: '@babel/polyfill',
         main: helpers.root('src', 'main'),
     },
     resolve: {
-        extensions: [ '.js', '.vue', '.ts', '.tsx' ],
+        extensions: [ '.ts', '.js', '.vue' ],
         alias: {
-            'vue$': isDev ? 'vue/dist/vue.runtime.js' : 'vue/dist/vue.runtime.min.js',
+            // 'vue$': isDev ? 'vue/dist/vue.runtime.js' : 'vue/dist/vue.runtime.min.js',
             '@': helpers.root('src')
         }
     },
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                options: {
+                    configFile: 'tsconfig.json',
+                    appendTsSuffixTo: [ /\.vue$/ ]
+                },
+                exclude: /node_modules/
+            },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
@@ -28,10 +38,6 @@ const webpackConfig = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: [ helpers.root('src') ]
-            },
-            {   test: /\.tsx?$/, 
-                loader: 'ts-loader',
                 include: [ helpers.root('src') ]
             },
             {
