@@ -1,10 +1,15 @@
 # Vue 2 infinfteScroll app with Vue, webpack 4, typescript
 
-#Install
+### Install
+```
 npm install
-
-#Build
+```
+### Compiles and minifies for production
+```
 npm run build
-
-#doc
+```
+### Doc
+```
 generate-doc
+```
+
