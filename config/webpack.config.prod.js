@@ -23,15 +23,9 @@ const webpackConfig = merge(commonConfig, {
         usedExports: true,
         splitChunks: {
             chunks: 'all',
-            minSize: 300,
-            maxSize: 3000,
-            maxAsyncRequests: 4,
-            cacheGroups: {
-                defaultVendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-            }
+            minSize: 30,
+            maxSize: 300,
+            maxAsyncRequests: 4
         },
         minimizer: [
             new OptimizeCSSAssetsPlugin({
@@ -56,7 +50,7 @@ const webpackConfig = merge(commonConfig, {
             filename: '[path].gz[query]',
             algorithm: 'gzip',
             test: new RegExp('\\.(js|css)$'),
-            threshold: 10240,
+            threshold: 8192,
             minRatio: 0.8
         }),
         new webpack.HashedModuleIdsPlugin()

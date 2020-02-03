@@ -27,7 +27,10 @@
         </div>
 
         <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta labore iure odio, architecto reiciendis, eligendi eius amet aspernatur rerum cupiditate, sapiente voluptatibus voluptate? Libero voluptatum quae officiis illo quasi animi?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Soluta labore iure odio, architecto reiciendis, eligendi eius
+          amet aspernatur rerum cupiditate, sapiente voluptatibus voluptate?
+          Libero voluptatum quae officiis illo quasi animi?
         </div>
       </div>
     </div>

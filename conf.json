@@ -1,0 +1,27 @@
+{
+    " source " : {
+    "include": ["src/types/user.ts", "src/service/userService.ts"],
+      "includePattern": "\\.(jsx|js|ts|tsx)$",
+      "excludePattern" : ".+\\.(test | spec).ts"
+   },
+   "recurseDepth": 10,
+   " plugins " : [
+      "plugins/markdown" ,
+      "node_modules/jsdoc-babel",
+      "jsdoc-plugin-typescript"
+   ],
+   "typescript": {
+    "moduleRoot": "./src"
+  },
+   "opts": {
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
+  },
+   "babel" : {
+      "extensions" : [ ".ts" , " .tsx ", ".js" ],
+      "babelrc" : false ,
+    "presets" : [[ "@babel/preset-env" , { "target" : { "node" : true }}],"@babel/preset-typcript" ]
+   }
+  }
