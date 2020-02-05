@@ -4,15 +4,17 @@
  * create a model of users from incoming rest api data
  */
 export class User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  photo: string;
+  firstName: '';
+  lastName: '';
+  email: '';
+  photo: '';
+  id: '';
 
-  constructor () {
-    this.firstName = '';
-    this.lastName = '';
-    this.email = '';
-    this.photo = '';
+  constructor (user: any) {
+    this.firstName = user.name.first;
+    this.lastName = user.name.last;
+    this.email = user.email;
+    this.photo = user.picture.thumbnail;
+    this.id = user.id.value;
   }
 }

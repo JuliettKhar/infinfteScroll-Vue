@@ -2,7 +2,7 @@
   <div class="card-wrapper">
     <div
       v-for="user in users"
-      :key="user.id.value"
+      :key="user.id"
       class="card"
     >
       <div class="card-content">
@@ -10,15 +10,15 @@
           <div class="media-left">
             <figure class="image is-8x8">
               <img
-                :src="user.picture.thumbnail"
+                :src="user.photo"
                 alt="Placeholder image"
               >
             </figure>
           </div>
           <div class="media-content">
             <p class="title is-4">
-              {{ user.name.first }}
-              {{ user.name.last }}
+              {{ user.firstName }}
+              {{ user.lastName }}
             </p>
             <p class="subtitle is-6">
               {{ user.email }}
@@ -61,10 +61,9 @@ export default class UserCard extends Vue {
       const response = await userService.getUsers(this.page)
           .then( response => response.json())
           .then( response => {
-              const users: User[] = [];
-              response.results.forEach( (user:any) => users.push(user));
-              this.page +=1;
-              this.users = [ ...this.users, ...users ];
+              const users =  response.results.map( (user:any) => new User(user));
+              this.page += 1;
+              this.users.push(...users);
           });
   }
 }
