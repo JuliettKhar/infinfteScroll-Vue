@@ -53,7 +53,7 @@
     "jsdoc-babel": "^0.5.0",
     "jsdoc-to-markdown": "^5.0.3",
     "mini-css-extract-plugin": "~0.5",
-    "node-sass": "~4.12",
+    "node-sass": "~4.14",
     "optimize-css-assets-webpack-plugin": "~5.0",
     "sass-loader": "~7.1",
     "ts-loader": "^6.2.1",
